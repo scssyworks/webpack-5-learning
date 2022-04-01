@@ -9,6 +9,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _kiwi_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _altText_txt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+
+
+
+function addImage() {
+  const img = document.createElement('img');
+  img.alt = _altText_txt__WEBPACK_IMPORTED_MODULE_1__;
+  img.width = 300;
+  img.src = _kiwi_jpg__WEBPACK_IMPORTED_MODULE_0__;
+
+  document.body.appendChild(img);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addImage);
+
+
+/***/ }),
+/* 2 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "c06a69d75aee765cdb40.jpg";
+
+/***/ }),
+/* 3 */
+/***/ ((module) => {
+
+module.exports = "Kiwi alt text";
+
+/***/ }),
+/* 4 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function helloWorld() {
   console.log('Hello World');
 }
@@ -72,15 +109,23 @@ function helloWorld() {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "dist/";
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _hello_world__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _add_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _hello_world__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 
 
-(0,_hello_world__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+(0,_hello_world__WEBPACK_IMPORTED_MODULE_1__["default"])();
+(0,_add_image__WEBPACK_IMPORTED_MODULE_0__["default"])();
 
 })();
 
