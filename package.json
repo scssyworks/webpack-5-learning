@@ -4,7 +4,8 @@
   "description": "This is a learning project for webpack 5",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "scssyworks",
@@ -16,6 +17,7 @@
     "babel-loader": "^8.2.4",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "express": "^4.17.3",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "style-loader": "^3.3.1",
