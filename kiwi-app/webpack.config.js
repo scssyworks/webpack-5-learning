@@ -3,6 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
   entry: './src/kiwi.js',
@@ -71,6 +72,12 @@ module.exports = {
         }
       },
       minify: false
+    }),
+    new ModuleFederationPlugin({
+      name: 'KiwiApp',
+      remotes: {
+        HelloWorldApp: 'HelloWorldApp@http://localhost:4000/remoteEntry.js'
+      }
     })
   ]
 };
