@@ -6,11 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-  entry: './src/hello-world.js',
+  entry: './src/dashboard.js',
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist'),
-    publicPath: 'http://localhost:4000/'
+    publicPath: ''
   },
   mode: 'production',
   optimization: {
@@ -19,12 +19,16 @@ module.exports = {
     }
   },
   devServer: {
-    port: 3000,
     static: {
       directory: path.resolve(__dirname, './dist')
     },
     devMiddleware: {
-      index: 'hello-world.html'
+      index: 'dashboard.html',
+      writeToDisk: true
+    },
+    port: 9000,
+    historyApiFallback: {
+      index: 'dashboard.html'
     }
   },
   module: {
@@ -41,7 +45,11 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/plugin-proposal-class-properties']
+              plugins: [
+                '@babel/plugin-proposal-class-properties',
+                '@babel/plugin-transform-runtime',
+                '@babel/plugin-transform-async-to-generator'
+              ]
             }
           }
         ]
@@ -55,8 +63,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'hello-world.html',
-      title: 'Hello World',
+      filename: 'dashboard.html',
+      title: 'Dashboard',
       meta: {
         'X-UA-Compatible': {
           'http-equiv': 'X-UA-Compatible',
@@ -66,13 +74,10 @@ module.exports = {
       minify: false
     }),
     new ModuleFederationPlugin({
-      name: 'HelloWorldApp',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './HelloWorldButton':
-          './src/components/hello-world-button/hello-world-button.js',
-        './HelloWorldPage':
-          './src/components/hello-world-page/hello-world-page.js'
+      name: 'Dashboard',
+      remotes: {
+        HelloWorldApp: 'HelloWorldApp@http://localhost:4000/remoteEntry.js',
+        KiwiApp: 'KiwiApp@http://localhost:4001/remoteEntry.js'
       }
     })
   ]
