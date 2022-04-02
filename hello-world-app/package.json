@@ -5,7 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack",
-    "serve": "webpack serve --hot"
+    "serve": "webpack serve --hot",
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "scssyworks",
