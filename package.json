@@ -4,7 +4,8 @@
   "description": "This is a learning project for webpack 5",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "webpack serve --hot"
   },
   "keywords": [],
   "author": "scssyworks",
@@ -21,7 +22,8 @@
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.71.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   },
   "repository": {
     "type": "git",

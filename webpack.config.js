@@ -12,6 +12,15 @@ module.exports = {
     publicPath: ''
   },
   mode: 'production',
+  devServer: {
+    port: 3000,
+    static: {
+      directory: path.resolve(__dirname, './dist')
+    },
+    devMiddleware: {
+      index: 'index.html'
+    }
+  },
   module: {
     rules: [
       {
