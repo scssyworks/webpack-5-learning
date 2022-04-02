@@ -5,13 +5,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/hello-world.js',
+    kiwi: './src/kiwi.js'
+  },
   output: {
-    filename: 'bundle.[contenthash].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: ''
   },
   mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   devServer: {
     port: 3000,
     static: {
@@ -53,7 +61,7 @@ module.exports = {
   plugins: [
     new TerserPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'bundle.[contenthash].css'
+      filename: '[name].[contenthash].css'
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
@@ -62,13 +70,28 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
+      filename: 'hello-world.html',
       title: 'Hello World',
+      chunks: ['hello-world'],
       meta: {
         'X-UA-Compatible': {
           'http-equiv': 'X-UA-Compatible',
           content: 'IE=edge'
         }
-      }
+      },
+      minify: false
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'kiwi.html',
+      title: 'Kiwi',
+      chunks: ['kiwi'],
+      meta: {
+        'X-UA-Compatible': {
+          'http-equiv': 'X-UA-Compatible',
+          content: 'IE=edge'
+        }
+      },
+      minify: false
     })
   ]
 };

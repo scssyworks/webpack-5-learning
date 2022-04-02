@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/scssyworks/webpack-5-learning/issues"
   },
-  "homepage": "https://github.com/scssyworks/webpack-5-learning#readme"
+  "homepage": "https://github.com/scssyworks/webpack-5-learning#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
